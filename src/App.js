@@ -6,6 +6,7 @@ import HomePage from './Components/Secured Pages/Home';
 import {history } from './Helper/history'
 import { useEffect } from 'react';
 import RegisterPage from './Components/Auth pages/Register';
+import { PrivateRoute } from './Helper/privateroute';
 
 
 function App() {
@@ -19,11 +20,10 @@ history.listen((location,action)=>{});
     <div className="App">
    <Router history = {history}>
      <Switch>
-     <Route exact path="/" component ={LoginPage}/>
+       <PrivateRoute exact path="/Home"  component ={HomePage}/>
        <Route path="/Login" component ={LoginPage}/>
-       <Route path="/Home" component ={HomePage}/>
        <Route path="/Register" component={RegisterPage}/>
-       <Redirect from="*" to="/" />
+       <Redirect from="*" to="/login" />
      </Switch>
    </Router>
     </div>
